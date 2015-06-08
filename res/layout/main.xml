@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="fill_parent"
+      android:layout_centerVertical="true">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/userNameField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter nick name"
+            android:src="@drawable/ic_launcher"
+            android:textSize="25sp"
+            android:layout_centerVertical="true"/>
+        <Button
+            android:id="@+id/load_images_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Load Images"
+            android:layout_toRightOf="@+id/userNameField"
+                android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/photos_list"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+    <Button
+        android:id="@+id/make_collage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ДАВАЙ КОЛЛАЖ"/>
+    <ImageView
+        android:id="@+id/collage_result"
+        android:layout_width="400dp"
+        android:layout_height="800dp"/>
+</LinearLayout>
+
