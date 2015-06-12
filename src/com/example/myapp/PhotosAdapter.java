@@ -45,7 +45,7 @@ public class PhotosAdapter extends ArrayAdapter<PhotoInfo> {
             mViewHolder =   (ViewHolder) convertView.getTag();
         }
         PhotoInfo photoInfo = getItem(position);
-        mViewHolder.image.setImageDrawable(photoInfo.getDrawable());
+        mViewHolder.image.setImageDrawable(getContext().getResources().getDrawable(photoInfo.getDrawable()));
         mViewHolder.name.setText(photoInfo.getName());
         if (photoInfo.isSelcted()) {
             mViewHolder.marker.setVisibility(View.VISIBLE);

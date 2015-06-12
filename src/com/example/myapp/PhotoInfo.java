@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
  */
 public class PhotoInfo {
 
-    public Drawable mDrawable;
+    public int mDrawable;
     private String mName;
     private int likesCount;
     private boolean isSelected;
@@ -16,11 +16,11 @@ public class PhotoInfo {
         mName = name;
     }
 
-    public Drawable getDrawable() {
+    public int getDrawable() {
         return mDrawable;
     }
 
-    public void setDrawable(Drawable drawable) {
+    public void setDrawable(int drawable) {
         mDrawable = drawable;
     }
 

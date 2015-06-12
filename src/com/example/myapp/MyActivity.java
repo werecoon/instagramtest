@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -75,17 +76,37 @@ public class MyActivity extends Activity implements View.OnClickListener, Adapte
     }
 
     private Bitmap getCollage(List<PhotoInfo> forCollage) {
-        int w = 400, h = 400;
+        int w = 400, h = 600;
 
+        int paddingHorizontal = 100;
+        int paddingVertical = 150;
         Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
         Bitmap bmp = Bitmap.createBitmap(w, h, conf); // this creates a MUTABLE bitmap
         Canvas canvas = new Canvas(bmp);
-        Bitmap enot = BitmapFactory.decodeResource(getResources(), R.drawable.enot);
-        Bitmap rama = BitmapFactory.decodeResource(getResources(), R.drawable.rama);
-        Rect ramaRect = new Rect(50, 50, 350, 350);
-        Rect enotRect = new Rect(100, 100, 300, 300);
-        canvas.drawBitmap(rama, null, ramaRect, null);
-        canvas.drawBitmap(enot, null, enotRect, null);
+        if (forCollage.size() > 0) {
+            Bitmap enot = BitmapFactory.decodeResource(getResources(), forCollage.get(0).getDrawable());
+//            Rect ramaRect = new Rect(50, 50, 350, 350);
+            Rect enotRect = new Rect(paddingHorizontal, paddingVertical, w-paddingHorizontal, h-paddingVertical);
+            canvas.drawBitmap(enot, null, enotRect, null);
+        }
+        int lastDrawnPhotoPosition = 0;
+        for (int i = 1; i < forCollage.size(); i++) {
+            if (i <= w/paddingHorizontal) {
+                Bitmap enot = BitmapFactory.decodeResource(getResources(), forCollage.get(i).getDrawable());
+                Rect enotRect = new Rect(paddingHorizontal*(i-1), 0, (i)*paddingHorizontal, paddingVertical);
+                canvas.drawBitmap(enot, null, enotRect, null);
+            } else if (i > w/paddingHorizontal && i <= 2*w/paddingHorizontal) {
+                Bitmap enot = BitmapFactory.decodeResource(getResources(), forCollage.get(i).getDrawable());
+                Rect enotRect = new Rect(paddingHorizontal*((i - 1 - w/paddingHorizontal)), h - paddingVertical, (i - w/paddingHorizontal)*paddingHorizontal, h);
+                canvas.drawBitmap(enot, null, enotRect, null);
+            } else if (i > 2*w/paddingHorizontal) {
+                Bitmap enot = BitmapFactory.decodeResource(getResources(), forCollage.get(i).getDrawable());
+                Rect enotRect = new Rect(paddingHorizontal*(i-1 - 2*w/paddingHorizontal), (i-2*w/paddingHorizontal)*paddingVertical,
+                        (i - 2*w/paddingHorizontal)*paddingHorizontal, (i+1-2*w/paddingHorizontal)*paddingVertical);
+                canvas.drawBitmap(enot, null, enotRect, null);
+            }
+
+        }
         return bmp;
     }
 
