@@ -1,26 +1,32 @@
 package com.example.myapp;
 
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import com.example.myapp.datamodel.Caption;
+import com.example.myapp.datamodel.Images;
+import com.example.myapp.datamodel.Likes;
 
 /**
  * Created by Artem on 06.06.2015.
  */
 public class PhotoInfo {
 
-    public int mDrawable;
+    public Bitmap mDrawable;
     private String mName;
     private int likesCount;
     private boolean isSelected;
+    Likes likes;
+    Images images;
+    Caption caption;
 
     public PhotoInfo(String name) {
         mName = name;
     }
 
-    public int getDrawable() {
+    public Bitmap getDrawable() {
         return mDrawable;
     }
 
-    public void setDrawable(int drawable) {
+    public void setBitmap(Bitmap drawable) {
         mDrawable = drawable;
     }
 

@@ -10,7 +10,7 @@ public class LocalPhotoLoader extends PhotoLoader {
     @Override
     public void loadPhotos(PhotoInfo[] photoInfos, Resources res) {
         for (int i = 0; i < photoInfos.length; i++) {
-            photoInfos[i].setDrawable(R.drawable.enot);
+//            photoInfos[i].setBitmap(R.drawable.enot);
         }
     }
 }

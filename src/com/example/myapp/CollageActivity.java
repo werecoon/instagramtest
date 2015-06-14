@@ -14,6 +14,6 @@ public class CollageActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.collage_layout);
-        ((ImageView)findViewById(R.id.collage_result)).setImageBitmap(MyActivity.COlLAGE);
+//        ((ImageView)findViewById(R.id.collage_result)).setImageBitmap(ChooseUserActivity.COlLAGE);
     }
 }
